@@ -1,0 +1,122 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2:Describe*",
+                "ec2:CreateSecurityGroup",
+                "ec2:AuthorizeSecurityGroupIngress",
+                "ec2:AuthorizeSecurityGroupEgress",
+                "ec2:RevokeSecurityGroupIngress",
+                "ec2:RevokeSecurityGroupEgress",
+                "ec2:DeleteSecurityGroup",
+                "ec2:CreateVpc",
+                "ec2:DeleteVpc",
+                "ec2:ModifyVpcAttribute",
+                "ec2:CreateSubnet",
+                "ec2:DeleteSubnet",
+                "ec2:ModifySubnetAttribute",
+                "ec2:CreateInternetGateway",
+                "ec2:DeleteInternetGateway",
+                "ec2:AttachInternetGateway",
+                "ec2:DetachInternetGateway"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "eks:CreateCluster",
+                "eks:DescribeCluster",
+                "eks:ListClusters",
+                "eks:DeleteCluster",
+                "eks:UpdateClusterConfig",
+                "eks:UpdateClusterVersion",
+                "eks:CreateNodegroup",
+                "eks:DescribeNodegroup",
+                "eks:ListNodegroups",
+                "eks:DeleteNodegroup",
+                "eks:UpdateNodegroupConfig"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:CreateRole",
+                "iam:AttachRolePolicy",
+                "iam:PutRolePolicy",
+                "iam:GetRole",
+                "iam:PassRole",
+                "iam:ListRoles",
+                "iam:ListRolePolicies"
+            ],
+            "Resource": [
+                "arn:aws:iam::${AWS_ACCOUNT_ID}:role/eks-*",
+                "arn:aws:iam::${AWS_ACCOUNT_ID}:role/GitHubActionsEKSRole"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents",
+                "logs:DescribeLogGroups"
+            ],
+            "Resource": "arn:aws:logs:us-east-2:${AWS_ACCOUNT_ID}:log-group:/aws/eks/*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:ListBucket",
+                "s3:GetObject",
+                "s3:PutObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::jprescott1-terraform-state",
+                "arn:aws:s3:::jprescott1-terraform-state/eks/terraform.tfstate",
+                "arn:aws:s3:::jprescott1-terraform-state/eks/terraform.tfstate.tflock"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "dynamodb:DescribeTable",
+                "dynamodb:ListTables",
+                "dynamodb:GetItem",
+                "dynamodb:PutItem",
+                "dynamodb:UpdateItem",
+                "dynamodb:DeleteItem",
+                "dynamodb:Scan",
+                "dynamodb:Query"
+            ],
+            "Resource": "arn:aws:dynamodb:us-east-1:${AWS_ACCOUNT_ID}:table/terraform-lock"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "kms:CreateKey",
+                "kms:TagResource",
+                "kms:DescribeKey",
+                "kms:EnableKeyRotation",
+                "kms:ListKeys",
+                "kms:GetKeyPolicy",
+                "kms:PutKeyPolicy",
+                "kms:Decrypt",
+                "kms:Encrypt",
+                "kms:GenerateDataKey"
+            ],
+            "Resource": "*"
+        },
+	{
+	    "Effect": "Allow",
+	    "Action": [
+	        "iam:GetPolicy",
+		"iam:GetPolicyVersion"
+	    ],
+	    "Resource": "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
+	}
+    ]
+}
