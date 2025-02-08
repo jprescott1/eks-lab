@@ -4,7 +4,7 @@ on:
   pull_request:
 
 permissions:
-  id-token: write
+#  id-token: write
   contents: read
 
 env:
@@ -24,12 +24,12 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v3
-      with:
-          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/GitHubActionsEKSRole
-          role-session-name: GitHubActionsSession
-          aws-region: us-east-1
+    # - name: Configure AWS credentials
+    #   uses: aws-actions/configure-aws-credentials@v3
+    #   with:
+    #       role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/GitHubActionsEKSRole
+    #       role-session-name: GitHubActionsSession
+    #       aws-region: us-east-1
 
     - name: Upload Configuration
       uses: hashicorp/tfc-workflows-github/actions/upload-configuration@v1.0.0
