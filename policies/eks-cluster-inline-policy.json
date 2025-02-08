@@ -48,6 +48,7 @@
                 "iam:AttachRolePolicy",
                 "iam:PutRolePolicy",
                 "iam:GetRole",
+                "iam:GetRolePolicy",
                 "iam:PassRole",
                 "iam:ListRoles",
                 "iam:ListRolePolicies"
@@ -65,7 +66,7 @@
                 "logs:PutLogEvents",
                 "logs:DescribeLogGroups"
             ],
-            "Resource": "arn:aws:logs:us-east-2:${AWS_ACCOUNT_ID}:log-group:/aws/eks/*"
+            "Resource": "arn:aws:logs:us-east-2:${AWS_ACCOUNT_ID}:log-group:/aws/eks/*:*"
         },
         {
             "Effect": "Allow",
@@ -110,20 +111,20 @@
             ],
             "Resource": "*"
         },
-	{
-	    "Effect": "Allow",
-	    "Action": [
-	        "iam:GetPolicy",
-		"iam:GetPolicyVersion"
-	    ],
-	    "Resource": "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
-	},
-    {
-        "Effect": "Allow",
-        "Action": [
-            "logs:DescribeLogGroups"
-        ],
-        "Resource": "*"
-    }
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:GetPolicy",
+                "iam:GetPolicyVersion"
+            ],
+            "Resource": "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:DescribeLogGroups"
+            ],
+            "Resource": "*"
+        }
     ]
 }
