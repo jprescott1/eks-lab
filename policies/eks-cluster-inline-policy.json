@@ -4,7 +4,7 @@
         {
             "Effect": "Allow",
             "Action": "sts:AssumeRole",
-            "Resource": "arn:aws:iam::851725524614:role/GitHubActionsEKSRole"
+            "Resource": "arn:aws:iam::${AWS_ACCOUNT_ID}:role/GitHubActionsEKSRole"
         },
         {
             "Effect": "Allow",
