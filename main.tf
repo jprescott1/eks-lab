@@ -2,6 +2,17 @@ provider "aws" {
   region = var.region
 }
 
+terraform { 
+  cloud { 
+    
+    organization = "jimmy-lab" 
+
+    workspaces { 
+      name = "eks-lab" 
+    } 
+  } 
+}
+
 # Filter out local zones, which are not currently supported 
 # with managed node groups
 data "aws_availability_zones" "available" {
