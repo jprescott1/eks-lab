@@ -117,6 +117,13 @@
 		"iam:GetPolicyVersion"
 	    ],
 	    "Resource": "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
-	}
+	},
+    {
+        "Effect": "Allow",
+        "Action": [
+            "logs:DescribeLogGroups"
+        ],
+        "Resource": "*"
+    }
     ]
 }
