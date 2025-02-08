@@ -55,7 +55,8 @@
             ],
             "Resource": [
                 "arn:aws:iam::${AWS_ACCOUNT_ID}:role/eks-*",
-                "arn:aws:iam::${AWS_ACCOUNT_ID}:role/GitHubActionsEKSRole"
+                "arn:aws:iam::${AWS_ACCOUNT_ID}:role/GitHubActionsEKSRole",
+                "arn:aws:iam::${AWS_ACCOUNT_ID}:role/eks-lab-*"
             ]
         },
         {
