@@ -67,10 +67,7 @@
                 "logs:PutLogEvents",
                 "logs:DescribeLogGroups"
             ],
-            "Resource": [
-                "arn:aws:logs:us-east-2:${AWS_ACCOUNT_ID}:log-group:/aws/eks/*:*",
-                "arn:aws:logs:us-east-2:${AWS_ACCOUNT_ID}:log-group:/aws/eks/*:*"
-            ]
+            "Resource": "*"
         },
         {
             "Effect": "Allow",
