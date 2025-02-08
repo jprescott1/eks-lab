@@ -3,6 +3,11 @@
     "Statement": [
         {
             "Effect": "Allow",
+            "Action": "sts:AssumeRole",
+            "Resource": "arn:aws:iam::851725524614:role/GitHubActionsEKSRole"
+        },
+        {
+            "Effect": "Allow",
             "Action": [
                 "ec2:Describe*",
                 "ec2:CreateSecurityGroup",
