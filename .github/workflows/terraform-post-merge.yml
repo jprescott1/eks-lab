@@ -5,7 +5,7 @@ on:
     types: [closed]
 
 env:
-   active: false
+   active: true
 
 permissions:
   id-token: write
