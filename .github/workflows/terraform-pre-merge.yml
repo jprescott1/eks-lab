@@ -31,14 +31,11 @@ jobs:
       - name: Terraform Format
         run: terraform fmt -check
 
-      - name: Terraform Apply IAM
-        run: terraform apply -target=aws_iam_openid_connect_provider.github_oidc -auto-approve
-
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v3
-        with:
-         role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/GitHubActionsEKSRole
-         aws-region: us-east-1
+      # - name: Configure AWS credentials
+      #   uses: aws-actions/configure-aws-credentials@v3
+      #   with:
+      #    role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/GitHubActionsEKSRole
+      #    aws-region: us-east-1
 
       - name: Terraform Plan (Pre-Merge)
         run: terraform plan -input=false
