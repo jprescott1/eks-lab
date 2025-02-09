@@ -4,9 +4,6 @@ on:
   pull_request:
     types: [closed]
 
-env:
-   active: true
-
 permissions:
   id-token: write
   contents: read
@@ -15,6 +12,8 @@ jobs:
   terraform-pre-merge:
     name: 'Terraform Post-Merge'
     runs-on: ubuntu-latest
+    env:
+      ACTIVE: 'false'
     environment: production
 
     defaults:
@@ -43,8 +42,8 @@ jobs:
 
       - name: Terraform Apply (Post-Merge)
         run: terraform apply -auto-approve -input=false
-        if: github.event.pull_request.merged == true && env.active == true
+        if: github.event.pull_request.merged == true && env.ACTIVE == 'true'
 
       - name: Terraform Destroy (Post-Merge)
         run: terraform destroy -auto-approve -input=false
-        if: github.event.pull_request.merged == true && env.active == false
+        if: github.event.pull_request.merged == true && env.ACTIVE == 'false'
