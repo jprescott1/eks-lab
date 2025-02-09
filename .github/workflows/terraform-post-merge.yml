@@ -47,4 +47,4 @@ jobs:
 
       - name: Terraform Destroy (Post-Merge)
         run: terraform destroy -auto-approve -input=false
-        if: env.active == false
+        if: github.event.pull_request.merged == true && env.active == false
