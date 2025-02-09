@@ -4,6 +4,9 @@ on:
   pull_request:
     types: [closed]
 
+env:
+   active: false
+
 permissions:
   id-token: write
   contents: read
@@ -40,4 +43,4 @@ jobs:
 
       - name: Terraform Apply (Post-Merge)
         run: terraform apply -auto-approve -input=false
-        if: github.event.pull_request.merged == true
+        if: github.event.pull_request.merged == true && env.active == true
