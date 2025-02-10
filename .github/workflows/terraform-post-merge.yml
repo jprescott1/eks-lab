@@ -13,7 +13,7 @@ jobs:
     name: 'Terraform Post-Merge'
     runs-on: ubuntu-latest
     env:
-      ACTIVE: 'false'   # true to build 
+      ACTIVE: 'true'   # true to build 
     environment: production
 
     defaults:
